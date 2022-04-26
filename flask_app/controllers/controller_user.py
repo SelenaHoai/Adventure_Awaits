@@ -33,9 +33,9 @@ def dashboard_for_user():
         return redirect('/')
 
 
-# @app.route('/logout')
-# def logout():
-#     return redirect('/')
+@app.route('/logout')
+def logout():
+    return redirect('/')
 
 
 # ******************** ACTION ROUTE **********************

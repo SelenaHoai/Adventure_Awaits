@@ -6,8 +6,48 @@
 #bg {
     background-size: cover;
 
+
 }
 /************* Landing Page **************/
+
+.section-top {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background-image: url("/static/image/backdrop4.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: change 10s infinite;
+}
+
+@keyframes change {
+    0%
+    {
+        background-image: url("/static/image/palmtree.jpg");
+    }
+    20%
+    {
+        background-image: url("/static/image/oceanwave.jpg");
+    }
+    40%
+    {
+        background-image: url("/static/image/airplane.jpg");
+    }
+    60%
+    {
+        background-image: url("/static/image/backdrop-unsplash.jpg");
+    }
+    80%
+    {
+        background-image: url("/static/image/desert.jpg");
+    }
+    100%
+    {
+        background-image: url("/static/image/backdrop3.jpg");
+    }
+}
 
 .adventure-awaits {
     font-size: 100px;
