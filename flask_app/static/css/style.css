@@ -15,17 +15,17 @@
     height: 100%;
     overflow: hidden;
     position: relative;
-    background-image: url("/static/image/backdrop4.jpg");
+    background-image: url("/static/image/compass-map.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    animation: change 10s infinite;
+    animation: change 10s infinite ease-in-out;
 }
 
 @keyframes change {
     0%
     {
-        background-image: url("/static/image/palmtree.jpg");
+        background-image: url("/static/image/airplane1.jpg");
     }
     20%
     {
@@ -33,7 +33,7 @@
     }
     40%
     {
-        background-image: url("/static/image/airplane.jpg");
+        background-image: url("/static/image/compass-map.jpg");
     }
     60%
     {
@@ -45,7 +45,7 @@
     }
     100%
     {
-        background-image: url("/static/image/backdrop3.jpg");
+        background-image: url("/static/image/palmtree.jpg");
     }
 }
 
