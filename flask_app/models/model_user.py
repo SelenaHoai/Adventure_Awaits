@@ -86,8 +86,6 @@ class User:
             location_data = {
                 "id": row_from_db["locations.id"],
                 "name": row_from_db["name"],
-                "favorite": row_from_db["favorite"],
-                "visit": row_from_db["visit"],
                 "created_at": row_from_db["locations.created_at"],
                 "updated_at": row_from_db["locations.updated_at"],
                 "user_id": row_from_db["locations.user_id"],
@@ -131,7 +129,6 @@ class User:
     @staticmethod
     def validator_login(form_data:dict):
         is_valid = True
-
         if len(form_data['email']) < 2:
             flash("Email is required!", 'err_email_login')
             is_valid = False
@@ -144,6 +141,7 @@ class User:
             is_valid = False
         else:
             potential_user = User.get_one_by_email({'email': form_data['email']})
+            print(potential_user)
             if potential_user == False:
                 flash("Invalid Credentials!", 'err_email_login')
                 is_valid = False

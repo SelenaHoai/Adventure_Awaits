@@ -26,7 +26,7 @@ def register():
 @app.route('/user/dashboard')
 def dashboard_for_user():
     if 'uuid' in session:
-        all_locations_from_db = model_location.Location.get_all_locations({'id':session['uuid']})
+        all_locations_from_db = model_location.Location.get_all_by_user_id({'user_id':session['uuid']})
         user_from_db = model_user.User.get_one_user({'id':session['uuid']})
         return render_template('dashboard_user.html', all_locations=all_locations_from_db, user=user_from_db)
     else:
@@ -45,7 +45,7 @@ def process_login():
     # validate login
     is_valid = model_user.User.validator_login(request.form)
     if not is_valid:
-        return redirect('/process/login')
+        return redirect('/login')
     return redirect('/user/dashboard')
 
 
@@ -68,7 +68,7 @@ def process_register():
 
 # ************************* Keep This At The Bottom *************************
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=True)
 
 # **************************** END

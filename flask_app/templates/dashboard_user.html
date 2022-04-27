@@ -50,6 +50,13 @@
 
                 </tr>
             </table>
+
+            {% for location in all_locations%}
+            {{ location.name }}
+            {% for attraction in location.attractions %}
+            {{ attraction.name }}
+            {% endfor %}
+            {% endfor %}
         </div>
     </div>
 

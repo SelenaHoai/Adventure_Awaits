@@ -1,5 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app.models import model_user
+from flask_app.models import model_user, model_attraction
 
 from flask_app import DATABASE, bcrypt
 
@@ -13,11 +13,10 @@ class Location:
     def __init__(self, data):
         self.id = data['id']
         self.name = data['name']
-        self.favorite = data['favorite']
-        self.visit = data['visit']
         self.user_id = data['user_id']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.attractions = []
 
 
     @property
@@ -26,43 +25,46 @@ class Location:
 
 
     @classmethod
-    def create_one_location(cls, data):
-        query = "INSERT into locations (name, favorite, visit, user_id) VALUES (%(name)s, %(favorite)s, %(visit)s, %(user_id)s);"
+    def save(cls, data):
+        query = "INSERT into locations (name, user_id) VALUES (%(name)s, %(user_id)s);"
         return connectToMySQL(DATABASE).query_db(query, data)
 
 
     @classmethod
-    def get_one_location(cls, data):
-        query = "SELECT * FROM locations WHERE id = %(id)s"
-        result = connectToMySQL(DATABASE).query_db(query, data)
-        return cls(result[0])
+    def get_all_by_user_id(cls, data):
+        query = "SELECT * FROM locations LEFT JOIN attractions ON attractions.location_id = locations.id WHERE user_id = %(user_id)s;"
+        results = connectToMySQL(DATABASE).query_db(query, data)
+        locations = []
+        for row in results:
+            if len(locations) == 0 or locations[-1].id != row['id']:
+                locations.append(cls(row))
+            attr_data = {
+                "id": row['attractions.id'],
+                "name": row['attractions.name'],
+                "created_at": row['attractions.created_at'],
+                "updated_at": row['attractions.updated_at'],
+                "location_id": row['id']
+            }
+            locations[-1].attractions.append(model_attraction.Attraction(attr_data))
+
+        return locations
 
     @classmethod
-    def get_all_locations(cls, data):
-        query = "SELECT * FROM locations LEFT JOIN users ON locations.user_id = users.id;"
+    def get_all_joined(cls, data):
+        query = "SELECT * FROM locations LEFT JOIN attractions ON attractions.location_id = locations.id WHERE locations.id = %(id)s;"
         results = connectToMySQL(DATABASE).query_db(query)
-        
-        if results: 
-            all_locations = []
-            for location in results:
-                location_actual = cls(location)
+        location = cls(results[0])
+        for row in results:
+            attr_data = {
+                "id": row['attractions.id'],
+                "name": row['attractions.name'],
+                "created_at": row['attractions.created_at'],
+                "updated_at": row['attractions.updated_at'],
+                "location_id": row['id']
+            }
+            location.attractions.append(model_attraction.Attraction(attr_data))
+        return location
 
-                data = {
-                    'id': location['users.id'],
-                    'first_name': location['first_name'],
-                    'last_name': location['last_name'],
-                    'email': location['email'],
-                    'password': location['password'],
-                    'created_at': location['users.created_at'],
-                    'updated_at': location['users.updated_at'],
-                }
-
-                owner = model_user.User(data)
-                location_actual.owner = owner
-
-                all_locations.append(location_actual)
-            return all_locations
-        return []
 
     # @classmethod
     # def update_one_location(cls, data: dict) -> object:
