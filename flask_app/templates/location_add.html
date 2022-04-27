@@ -27,23 +27,20 @@
         </div>
         <form action="/locations/create" method="post" class="add-location-form">
             <div>
-                <p><label for="l_name">Location:</label> <input type="text" name="l_name" id="l_name"></p>
-                <p></p>
+                <p><label for="l_name">Location:</label> </p>
+                <p><input type="text" name="l_name" id="l_name"></p>
                 <!-- {% for message in get_flashed_messages(category_filter=["err_name"]) %}
                 <p class="alert alert-danger">{{ message }}</p>
                 {% endfor %} -->
                 <div class="d-flex flex-column">
                     <div id="attraction">
-                        <p><label for="l_name">Attraction(s):</label>
-                        <!-- <p> -->
+                        <p><label for="l_name">Attraction(s):</label></p>
+                        <p>
                             <input type="text" name="name" class="">
-                            <button style="height: fit-content;" id="btn" class="btn btn-outline-secondary mx-1" type="button">+</button>
+                            <button style="height: 50% !important;" id="btn" class="btn btn-sm btn-outline-secondary mx-1" type="button">+</button>
                         </p>
-                    </div>
-                    
+                    </div>                    
                 </div>
-
-
                 <div class="d-flex justify-content-end">
                     <button class="btn btn-warning mt-4" type="submit">Add to Bucketlist</button>
                 </div>

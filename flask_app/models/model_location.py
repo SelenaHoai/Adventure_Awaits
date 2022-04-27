@@ -52,7 +52,7 @@ class Location:
     @classmethod
     def get_all_joined(cls, data):
         query = "SELECT * FROM locations LEFT JOIN attractions ON attractions.location_id = locations.id WHERE locations.id = %(id)s;"
-        results = connectToMySQL(DATABASE).query_db(query)
+        results = connectToMySQL(DATABASE).query_db(query,data)
         location = cls(results[0])
         for row in results:
             attr_data = {
@@ -66,10 +66,10 @@ class Location:
         return location
 
 
-    # @classmethod
-    # def update_one_location(cls, data: dict) -> object:
-    #     query = "UPDATE locations SET location=%(location)s, description=%(description)s, date=%(date)s, number=%(number)s WHERE id = (%(id)s);"
-    #     return connectToMySQL(DATABASE).query_db(query, data)
+    @classmethod
+    def update_one_location(cls, data: dict) -> object:
+        query = "UPDATE locations SET name=%(name)s WHERE id = (%(id)s);"
+        return connectToMySQL(DATABASE).query_db(query, data)
     
     
     # @classmethod

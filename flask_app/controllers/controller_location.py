@@ -14,11 +14,11 @@ def loc_att_new():
     return render_template("location_add.html")
 
 
-@app.route('/locations/edit/<int:id>')
-def loc_att_edit(id):
-    return render_template('location_update.html')
+# @app.route('/locations/edit/<int:id>')
+# def loc_att_edit(id):
+#     return render_template('location_update.html')
 
-    
+
 # @app.route('/locations/<int:id>')
 # def location_descriptions(id):
 #     if not 'uuid' in session:
@@ -31,16 +31,16 @@ def loc_att_edit(id):
 #     return render_template("location_descriptions.html", location=get_one_location, user=user_from_db)
 
 
-# @app.route('/locations/edit/<int:id>')
-# def location_edit(id):
-#     if not 'uuid' in session:
-#         return redirect('locations/create')
-#     data = {
-#         "id": id
-#     }
-#     user_from_db = model_user.User.get_one_user({'id':session['uuid']})
-#     edit_one_location = model_location.Location.get_one_location(data)
-#     return render_template("location_edit.html", location=edit_one_location, user=user_from_db)
+@app.route('/locations/edit/<int:id>')
+def location_edit(id):
+    if not 'uuid' in session:
+        return redirect('/')
+    data = {
+        "id": id
+    }
+    user_from_db = model_user.User.get_one_user({'id':session['uuid']})
+    edit_one_location = model_location.Location.get_all_joined(data)
+    return render_template("location_update.html", location=edit_one_location, user=user_from_db)
 
 
 # @app.route('/locations/delete/<int:id>')
@@ -54,8 +54,6 @@ def loc_att_edit(id):
 
 
 
-
-
 # ******************** ACTION ROUTE **********************
 
 @app.route('/locations/create', methods=['post'])
@@ -65,11 +63,11 @@ def loc_att_create():
     return redirect("/user/dashboard")
 
 
-# @app.route('/locations/update/<int:id>', methods=['post'])
-# def location_update(id):
-#     loc_id = model_location.Location.save({ 'name': request.form['l_name'], 'user_id': 1 })
-#     model_attraction.Attraction.save_mult(request.form,loc_id)
-#     return redirect("/user/dashboard")
+@app.route('/locations/update/<int:id>', methods=['post'])
+def location_update(id):
+    loc_id = model_location.Location.save({ 'name': request.form['l_name'], 'user_id': 1 })
+    # model_attraction.Attraction.update_one_location(request.form,loc_id)
+    return redirect("/user/dashboard")
 
 
 # ************************* Keep This At The Bottom ************************
