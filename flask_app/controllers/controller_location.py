@@ -65,8 +65,16 @@ def loc_att_create():
 
 @app.route('/locations/update/<int:id>', methods=['post'])
 def location_update(id):
-    loc_id = model_location.Location.save({ 'name': request.form['l_name'], 'user_id': 1 })
-    # model_attraction.Attraction.update_one_location(request.form,loc_id)
+    model_location.Location.update_one_location({ 'name': request.form['l_name'], 'id': id })
+    sep_list = model_attraction.Attraction.separate_keys(request.form)
+    for item in sep_list["update"]:
+        model_attraction.Attraction.update_attractions(item)
+    for item in sep_list["new"]:
+        new_attr={
+            "name": item,
+            "loc_id": id
+        }
+        model_attraction.Attraction.save_one(new_attr)
     return redirect("/user/dashboard")
 
 

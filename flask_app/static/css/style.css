@@ -108,6 +108,13 @@ body {
     height: 100%;
 }
 
+/* GOOGLE MAP */
+
+#map {
+    height:400px;
+    width: 400px;
+}
+
 /************* Add Location **************/
 
 .add-table {
@@ -131,6 +138,18 @@ body {
     height: 10px;
     width: 10px;
 
+}
+
+/************* Update Location **************/
+
+.update-location-form {
+    /* margin-top: 5%; */
+    /* margin-left: 10px; */
+    border: 1px solid white;
+    padding: 20px;
+    width: 400px;
+    height: 50%;
+    color: white;
 }
 
 /************* Plan A Trip **************/

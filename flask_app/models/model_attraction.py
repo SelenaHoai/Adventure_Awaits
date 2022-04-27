@@ -37,6 +37,10 @@ class Attraction:
         query = f"INSERT INTO attractions (name, location_id) VALUES {test};"
         return connectToMySQL(DATABASE).query_db(query)
     
+    @classmethod
+    def save_one(cls, data):
+        query = f"INSERT INTO attractions (name, location_id) VALUES (%(name)s, %(loc_id)s);"
+        return connectToMySQL(DATABASE).query_db(query,data)
 
     @staticmethod
     def add_more_values(data, loc_id):
@@ -49,3 +53,28 @@ class Attraction:
                 more_values_str += f"('{name}', {loc_id}), "
 
         return more_values_str
+
+    @classmethod
+    def update_attractions(cls, data: dict) -> object:
+        query = "UPDATE attractions SET name=%(name)s WHERE id = (%(id)s);"
+        return connectToMySQL(DATABASE).query_db(query, data)
+
+    @staticmethod
+    def separate_keys(data):
+        sep_data = {
+            "update": [],
+            "new": []
+        }
+        for key in data:
+            sep_list = key.split("_")
+            if sep_list[0] == "name":
+                if sep_list[1] != "new":
+                    new_item = {
+                        "name": data[key],
+                        "id": sep_list[1]
+                    }
+                    sep_data["update"].append(new_item)            
+        new_data = data.to_dict(flat=False)
+        if "name_new" in new_data:
+            sep_data["new"] = new_data["name_new"]
+        return sep_data
