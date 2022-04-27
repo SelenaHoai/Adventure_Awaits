@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="d-flex justify-content-end">
-        <h2 class="text-center font-monospace text-white mt-4">Welcome back {{ user.first_name }}!</h2>
+        <h2 class="text-center font-monospace text-white my-5 mx-5">Welcome back {{ user.first_name }}!</h2>
     </div>
     <div>
         <div class="user-dashboard">
@@ -33,30 +33,32 @@
             <table class="bucket-list-table mt-4 text-center">
                 <thead>
                     <tr>
-                        <th>Favorite</th>
                         <th>Location</th>
-                        <th>Visited</th>
+                        <th>Attractions</th>
                     </tr>
                 </thead>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td></td>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-
-
-                </tr>
+                <tbody>
+                    {% for location in all_locations%}
+                    <tr>
+                        <td>
+                            <a href="/locations/edit/{{location.id}}">{{ location.name }}</a>
+                        </td>
+                        <td>
+                            {% for attraction in location.attractions %}
+                            {{ attraction.name }}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
 
-            {% for location in all_locations%}
-            {{ location.name }}
-            {% for attraction in location.attractions %}
-            {{ attraction.name }}
-            {% endfor %}
-            {% endfor %}
+
+
+
+
+
+
         </div>
     </div>
 

@@ -11,12 +11,14 @@ from flask_app.models import model_user, model_location, model_attraction
 def loc_att_new():
     if not 'uuid' in session:
         return redirect('/')
+    return render_template("location_add.html")
 
 
+@app.route('/locations/edit/<int:id>')
+def loc_att_edit(id):
+    return render_template('location_update.html')
 
-    return render_template("add_location.html")
-
-
+    
 # @app.route('/locations/<int:id>')
 # def location_descriptions(id):
 #     if not 'uuid' in session:
@@ -65,15 +67,8 @@ def loc_att_create():
 
 # @app.route('/locations/update/<int:id>', methods=['post'])
 # def location_update(id):
-#     is_valid = model_location.Location.validator(request.form)
-#     if not is_valid:
-#         return redirect(f'/locations/edit/{id}')
-#     data = {
-#         **request.form,
-#         "id": id,
-#         "user_id":session['uuid']
-#     }
-#     model_location.Location.update_one_location(data)
+#     loc_id = model_location.Location.save({ 'name': request.form['l_name'], 'user_id': 1 })
+#     model_attraction.Attraction.save_mult(request.form,loc_id)
 #     return redirect("/user/dashboard")
 
 
