@@ -25,14 +25,14 @@
             <a type="button" class="btn font-monospace text-white" href="/locations/new">Add</a>
         </div>
         <div>
-            <a type="button" class="btn font-monospace text-white" href="#">Location</a>
+            <input type="text" placeholder="Search..">
             <a type="button" class="btn font-monospace text-white" href="/logout">Logout</a>
         </div>
     </div>
     <div class="d-flex justify-content-end">
         <h2 class="text-center font-monospace text-white my-5 mx-5">Welcome back {{ user.first_name }}!</h2>
     </div>
-    <div>
+    <div class="d-flex justify-content-around">
         <div class="user-dashboard">
             <div class="mt-4 text-white font-monospace">
                 <h4>Start living your dream..</h4>
@@ -48,7 +48,7 @@
                     {% for location in all_locations%}
                     <tr>
                         <td>
-                            <a href="/locations/edit/{{location.id}}">{{ location.name }}</a>
+                            <a href="/locations/edit/{{location.id}}" class="loc-link">{{ location.name }}</a>
                         </td>
                         <td>
                             {% for attraction in location.attractions %}
@@ -60,19 +60,25 @@
                 </tbody>
             </table>
         </div>
+        <div class="text-white font-monospace mt-2">
+            <p><h4 class="mb-4">Visualize..</h4><input id="pac-input" class="controls" type="text" placeholder="Search Box"/></p>
+            <div id="map"></div>
+        </div>
     </div>
 
-<br>
-<br>
 
-    <h1>My Google Map</h1>
-    <div id="map"></div>
 
-    <script
+
+
+    <!-- Google Map Key -->
+    <!-- <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA10wa8YE4zxX8K4MIdMJwCxU3jBaw3_VU&callback=initMap&v=weekly"
       defer
+    ></script> -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA10wa8YE4zxX8K4MIdMJwCxU3jBaw3_VU&callback=initAutocomplete&libraries=places&v=weekly"
+      defer
     ></script>
-
 
     <!-- Bootstrap JS Link -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
