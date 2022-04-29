@@ -100,7 +100,7 @@ body {
 
 .bucket-list-table {
     color: white;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     /* border-collapse: collapse; */
     /* height: 500px; */
     width: 600px;

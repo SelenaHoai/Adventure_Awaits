@@ -32,19 +32,19 @@
         </div>
         <form action="/locations/update/{{location.id}}" method="post" class="update-location-form">
             <div>
-                <p><label for="l_name">Location:</label> <input type="text" name="l_name" id="l_name" value="{{ location.name }}"></p>
-                <p></p>
+                <p><label for="l_name">Location:</label></p>
+                <p><input type="text" name="l_name" id="l_name" value="{{ location.name }}"></p>
                 <div class="d-flex flex-column">
                     <div id="attraction-update">
                         {% for attraction in location.attractions %}
-                        <p><label for="l_name">Attraction(s):</label>
-                        <!-- <p> -->
+                        <p><label for="l_name">Attraction(s):</label></p>
+                        <p>
                             <input type="text" name="name_{{attraction.id}}" class="" value="{{ attraction.name }}">
                         </p>
                         {% endfor %}
                     </div>                    
                 </div>
-                <button style="height: fit-content;" id="btn-update" class="btn btn-outline-secondary mx-1" type="button">+</button>
+                <button style="height: 50% !important;" id="btn-update" class="btn btn-sm btn-outline-secondary mx-1" type="button">+</button>
                 <div class="d-flex justify-content-end">
                     <button class="btn btn-warning mt-4" type="submit">Update</button>
                 </div>
