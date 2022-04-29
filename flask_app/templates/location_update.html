@@ -43,6 +43,7 @@
                         <p><label for="l_name">Attraction(s):</label></p>
                         <p>
                             <input type="text" name="name_{{attraction.id}}" class="" value="{{ attraction.name }}">
+                            <a href="/attractions/delete/{{attraction.id}}/{{location.id}}">Delete</a>
                         </p>
                         {% endfor %}
                     </div>                    
@@ -56,7 +57,6 @@
         </form>
     </div>
 
-    
 
 
     <!-- Optional JavaScript -->

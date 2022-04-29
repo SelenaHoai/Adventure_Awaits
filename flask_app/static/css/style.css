@@ -67,6 +67,7 @@ body {
     margin-top: 50px;
     padding: 20px;
     background-color: rgb(80,162,176);
+    border-radius: 10px;
     opacity: .9;
 }
 
@@ -84,6 +85,7 @@ body {
     margin-top: 50px;
     padding: 20px;
     background-color: rgb(80,162,176);
+    border-radius: 10px;
     opacity: .9;
 }
 
@@ -225,11 +227,12 @@ body {
     /* margin-top: 5%; */
     /* margin-left: 10px; */
     border: 1px solid white;
+    border-radius: 10px;
     padding: 20px;
     width: 350px;
     /* height: 500px; */
     color: white;
-    border-radius: 10px;
+
 }
 
 #plus-btn {
@@ -246,6 +249,7 @@ body {
     /* margin-top: 5%; */
     /* margin-left: 10px; */
     border: 1px solid white;
+    border-radius: 10px;
     padding: 20px;
     width: 400px;
     height: 50%;

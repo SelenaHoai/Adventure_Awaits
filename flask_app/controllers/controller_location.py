@@ -14,10 +14,6 @@ def loc_att_new():
     return render_template("location_add.html")
 
 
-# @app.route('/locations/edit/<int:id>')
-# def loc_att_edit(id):
-#     return render_template('location_update.html')
-
 
 # @app.route('/locations/<int:id>')
 # def location_descriptions(id):
@@ -49,7 +45,7 @@ def location_delete(id):
         "id": id
     }
     model_location.Location.delete_location(data)
-    return redirect(f"/locations/edit/{id}")
+    return redirect("/user/dashboard")
 
 
 

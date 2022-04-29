@@ -8,4 +8,4 @@ bcrypt = Bcrypt(app)
 
 DATABASE = 'adventure_awaits_db'
 
-from flask_app.controllers import controller_user, controller_location
+from flask_app.controllers import controller_user, controller_location, controller_attraction

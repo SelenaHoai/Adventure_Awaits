@@ -78,3 +78,8 @@ class Attraction:
         if "name_new" in new_data:
             sep_data["new"] = new_data["name_new"]
         return sep_data
+
+    @classmethod
+    def delete_attraction(cls, data: dict) -> object:
+        query = "DELETE FROM attractions WHERE id = %(id)s;"
+        return connectToMySQL(DATABASE).query_db(query, data)

@@ -1,16 +1,18 @@
-function initMap() {
-    const uluru = {lat:32.7157,lng:-117.1611};
-    const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: uluru,
-    });
-    const marker = new google.maps.Marker({
-        position: uluru,
-        map: map,
-    });
-}
+/******** World Map without search box *********/
 
-window.initMap = initMap;
+// function initMap() {
+//     const uluru = {lat:32.7157,lng:-117.1611};
+//     const map = new google.maps.Map(document.getElementById('map'), {
+//         zoom: 4,
+//         center: uluru,
+//     });
+//     const marker = new google.maps.Marker({
+//         position: uluru,
+//         map: map,
+//     });
+// }
+
+// window.initMap = initMap;
 
 
 
@@ -21,7 +23,7 @@ window.initMap = initMap;
 function initAutocomplete() {
     const map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 47.6062, lng: -122.3321 },
-      zoom: 1,
+      zoom: 2,
       mapTypeId: "roadmap",
     });
     // Create the search box and link it to the UI element.

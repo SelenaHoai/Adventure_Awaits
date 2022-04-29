@@ -74,7 +74,7 @@ class Location:
     
     @classmethod
     def delete_location(cls, data: dict) -> object:
-        query = "DELETE FROM locations WHERE id = (%(id)s);"
+        query = "DELETE FROM locations WHERE id = %(id)s;"
         return connectToMySQL(DATABASE).query_db(query, data)
 
 
