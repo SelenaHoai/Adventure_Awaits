@@ -33,11 +33,11 @@
         <h2 class="text-center font-monospace text-white my-5 mx-5">Welcome back {{ user.first_name }}!</h2>
     </div>
     <div class="d-flex justify-content-around">
-        <div class="user-dashboard">
+        <div>
             <div class="mt-4 text-white font-monospace">
                 <h4>Start living your dream..</h4>
             </div>
-            <table class="bucket-list-table mt-4 text-center">
+            <table class="bucket-list-table mt-4 text-center font-monospace">
                 <thead>
                     <tr>
                         <th>Locations</th>
@@ -61,7 +61,7 @@
             </table>
         </div>
         <div class="text-white font-monospace mt-2">
-            <p><h4 class="mb-4">Visualize..</h4><input id="pac-input" class="controls" type="text" placeholder="Search Box"/></p>
+            <p><h4 class="mb-4">Visualize..<input id="pac-input" class="controls" type="text" placeholder="Enter a location"/></h4></p>
             <div id="map"></div>
         </div>
     </div>
