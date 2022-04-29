@@ -43,13 +43,13 @@ def location_edit(id):
     return render_template("location_update.html", location=edit_one_location, user=user_from_db)
 
 
-# @app.route('/locations/delete/<int:id>')
-# def location_delete(id):
-#     data = {
-#         "id": id
-#     }
-#     model_location.Location.delete_location(data)
-#     return redirect("/user/dashboard")
+@app.route('/locations/delete/<int:id>')
+def location_delete(id):
+    data = {
+        "id": id
+    }
+    model_location.Location.delete_location(data)
+    return redirect(f"/locations/edit/{id}")
 
 
 

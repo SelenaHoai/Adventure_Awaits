@@ -32,6 +32,9 @@
         </div>
         <form action="/locations/update/{{location.id}}" method="post" class="update-location-form">
             <div>
+                <div class="d-flex justify-content-end">
+                    <a type="button" class="btn text-danger" href="/locations/delete/{{location.id}}">Remove</a>
+                </div>
                 <p><label for="l_name">Location:</label></p>
                 <p><input type="text" name="l_name" id="l_name" value="{{ location.name }}"></p>
                 <div class="d-flex flex-column">
@@ -46,11 +49,14 @@
                 </div>
                 <button style="height: 50% !important;" id="btn-update" class="btn btn-sm btn-outline-secondary mx-1" type="button">+</button>
                 <div class="d-flex justify-content-end">
-                    <button class="btn btn-warning mt-4" type="submit">Update</button>
+                    <button type="submit" class="btn btn-warning mt-4">Update</button>
                 </div>
+
             </div>
         </form>
     </div>
+
+    
 
 
     <!-- Optional JavaScript -->
