@@ -54,7 +54,7 @@ def location_delete(id):
 
 @app.route('/locations/create', methods=['post'])
 def loc_att_create(): 
-    loc_id = model_location.Location.save({ 'name': request.form['l_name'], 'user_id': 1 })
+    loc_id = model_location.Location.save({ 'name': request.form['l_name'], 'user_id':session['uuid']})
     model_attraction.Attraction.save_mult(request.form,loc_id)
     return redirect("/user/dashboard")
 

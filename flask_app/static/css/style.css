@@ -106,7 +106,7 @@ body {
     /* border-collapse: collapse; */
     /* height: 500px; */
     width: 600px;
-    height: 300px;
+    /* height: 300px; */
 
 }
 
@@ -254,6 +254,16 @@ body {
     width: 400px;
     height: 50%;
     color: white;
+}
+
+#loc_delete_btn {
+    text-decoration: none;
+    color: white;
+    height: 20px;
+    width: 20px;
+    /* padding-bottom: 10px; */
+    border: 1px solid white;
+    text-align: center;
 }
 
 /************* Plan A Trip **************/

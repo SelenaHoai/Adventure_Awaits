@@ -43,7 +43,7 @@
                         <p><label for="l_name">Attraction(s):</label></p>
                         <p>
                             <input type="text" name="name_{{attraction.id}}" class="" value="{{ attraction.name }}">
-                            <a href="/attractions/delete/{{attraction.id}}/{{location.id}}">Delete</a>
+                            <a type="button" id="loc_delete_btn" href="/attractions/delete/{{attraction.id}}/{{location.id}}">X</a>
                         </p>
                         {% endfor %}
                     </div>                    
